@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />  
+    <link rel="shortcut icon" href="imagesfavicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ramabhadra&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e6fd7a07ed.js"></script>
+    <script type="text/javascript" src="src/delighters.js"></script>
+    <link rel=stylesheet type="text/css" href="animate.css">
+   
+    
+    
+    <title>詳細ページ</title>
+    
+    <style>
+        @font-face {
+    font-family:SourceHanSerif-Medium;
+    src: local(SourceHanSerif-Medium),url(font/SourceHanSerif-Medium.otf);
+       }
+
+        .flex{
+            display: flex;
+        }
+        .wrap{
+            max-width:1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        @font-face{
+            font-family:SoukouMincho;
+            src: url(Font/SoukouMincho.ttf)
+        }
+        
+        .clear{
+                margin: 0;
+                padding: 0;
+            }
+        header{
+        }
+        @keyframes headSaber{
+            from{
+        opacity: 1;
+        left:0;
+    }
+    to{
+        left:15%;
+    }
+}
+        @media screen and (max-width: 1010px){
+          .headimg img{
+           max-width: 60%;
+           left: 0;
+        }
+        }
+        @media screen and (max-width: 375px){
+            .headimg img{
+           max-width: 375px;
+           left: 0;
+        }
+        }
+    @keyframes logo{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+
+    @keyframes headWatch{
+        from{
+            left: 80%;
+        }
+        to{
+            left: 55%;
+            opacity: 1;
+        }
+    }
+    
+    nav{
+        height: 60px;
+        width: 100%;
+        background: url(images/bg_ptn.gif);
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        position: fixed;
+        z-index: 100;
+
+    }
+    .navcontainer{
+        height: 60px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .navlogo{
+        height: 30px;
+    }
+    .menu{
+    
+    }
+    .menu a{
+        text-decoration: none;
+        padding: 20px;
+        font-family:Kosugi Maru;
+        letter-spacing: 2px;
+        color:#0f1f38;
+        transition: .3s;
+    }
+    nav ul li:hover a{
+        border-radius: 4px;
+        background: radial-gradient(ellipse at center, rgba(31,63,114,1) 0%, rgba(31,63,114,1) 29%, rgba(10,20,37,1) 100%);
+        color: #fff;
+        transition: .3s;
+
+    }
+   
+  .bgfix{
+      background: fixed;
+  }
+  .navFixed {
+  z-index: 200;          
+  position: fixed;      
+  top: 0;
+  left: 0;
+  margin-top: 0;
+  min-width: 100%;
+  opacity: 0.94;
+  transition: opacity .5s ease-out;   
+}
+
+.BUY a{
+        text-decoration: none;
+        width:135px;
+        margin: 0 auto;
+        font-family:Kosugi Maru;
+        padding:12px 0px 12px 0px;
+        letter-spacing: 2px;
+        color:#fff;
+        transition: .3s;
+        display: block;
+        background: #001352;
+}
+.BUY:hover{
+    text-shadow:0 0 5px #fff;
+    transition: .3s;
+}
+.btn{
+    height: 39px;
+    width: 200px;
+    text-align: center;
+    background: url(images/bg-left.png) left center no-repeat, url(images/bg-right.png) right center no-repeat;
+    background-size: 35px 40px;
+}
+.block{
+    width: 100%;
+    height: 200px;
+}
+
+
+.fadeIn{
+        animation-duration: 1s;
+        animation-name: logo;
+        animation-fill-mode:forwards;
+        opacity: 0;
+}
+
+    .textAlign{
+        text-align: center;
+        vertical-align:middle;
+    }
+    
+    }
+    footer p{
+        padding: 20px;
+        color: #ddd;
+        font-size: 18px;
+        font-family:  SourceHanSerif-Medium;
+        line-height: 30px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+    
+    footer{
+        background:linear-gradient(to right, rgba(15,31,56,1) 0%, rgba(14,23,52,1) 22%, rgba(12,13,47,1) 48%, rgba(13,22,51,1) 73%, rgba(15,31,56,1) 100%);
+        height:50px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #goTop{
+    position: fixed;
+    right:60px;
+    bottom:60px;
+   }
+   .TOP{
+       width: 50px;
+       height: 50px;
+       border-radius:5px;
+       background: url(images/up-arrow.png) no-repeat;
+       transition: all .5s;
+       animation-duration: 1s;
+       animation-name: logo;
+       animation-fill-mode:forwards;
+        opacity: 0;
+        cursor: pointer;
+      /* background: #1c2d64; */
+
+   }
+   .TOP:hover{
+    opacity: 0.5;
+    transition: .5s;
+   }
+   @-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+  transition: all 1s;
+   animation-duration: 1s;
+   animation-fill-mode:forwards;
+
+}
+@keyframes fadein {
+    from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+}
+
+.fadein {
+   animation-name: fadein ;
+   transition: all 1s;
+   animation-duration: 1.5s;
+   animation-fill-mode:forwards;
+
+}
+body{
+    background: url(images/bg_ptn_b.gif);
+}
+.main{
+    width: 100%;
+    height: 900px;
+}
+#wrapper{
+		padding-top: 20px;
+		position: relative;
+		width: 672px;
+		height:428px;
+		overflow: hidden;
+		margin: 0 auto;
+    }
+    .pic img{
+        width: 672px;
+    }
+    #wrapper ul.pic{
+		position: absolute;
+		width: 9999px;
+	}
+	#wrapper h2,#wrapper h3{
+		cursor: pointer;
+		position: absolute;
+		top:214px;
+		z-index: 5;
+	} 
+	#wrapper h2{
+		left: 630px;
+	}
+	#wrapper ul.pic li{
+		float: left;
+	}
+	ul.page{
+		margin: 0 auto;
+		padding-top: 20px;
+	}
+	ul.page li{
+        margin: 30px 8px;
+		float: left;
+		width: 20px;
+		height: 6px;
+		border:1px solid rgba(0, 197, 223, 0.507);
+		border-radius: 5px;
+	}
+	.DotColor{
+        box-shadow: 0 0 3px rgb(0, 197, 223);
+		background-color:rgb(0, 197, 223) !important;
+	}
+    #wrapper h2 img, #wrapper h3 img{
+        height: 50px;
+    }
+    #wrapper h2:hover img, #wrapper h3:hover img{
+        filter: brightness(2);
+        transition: .3s;
+    }
+    h4{
+    text-align: center;
+    width: 600px;
+    font-family: SourceHanSerif-Medium;
+    line-height: 30px;
+    font-size: 30px;
+    color: #fff;
+    letter-spacing: 2px; 
+    background: url(images/ex_left.png) left center no-repeat, url(images/ex_right.png) right center no-repeat;
+    align-self:center;
+    
+    
+    }
+    .title{
+        width: 100%;
+        height:200px;
+        background: url(images/lancer.png) no-repeat;
+        background-size:contain;
+        justify-content: center;
+        align-items: center;
+        background-attachment: fixed;
+    }
+   h1{
+    /* text-align: center; */
+    font-family: SourceHanSerif-Medium;
+    line-height: 30px;
+    font-size: 40px;
+    color: #fff;
+    letter-spacing: 5px;
+   }
+   h2{
+    /* text-align: center; */
+    font-family: SourceHanSerif-Medium;
+    line-height: 30px;
+    font-size: 24px;
+    color: #fff;
+    letter-spacing: 2px;
+    width: 200px;
+
+   }
+   h6{
+    /* text-align: center; */
+    font-family: SourceHanSerif-Medium;
+    line-height: 30px;
+    font-size: 24px;
+    color: #fff;
+    letter-spacing: 2px;
+
+   }
+   .hr{
+       width: 100%;
+       max-width:1200px;
+       height: 1px;
+       background: #888;
+       margin: 0 auto;
+   }
+   .sblock{
+       width: 100%;
+       height: 50px;
+   }
+   .sale{
+       width: 100%;
+       height: 400px;
+       display: flex;
+       flex-direction: column;
+       justify-content:space-evenly
+   }
+   .s1 p{
+    font-family: SourceHanSerif-Medium;
+    line-height: 30px;
+    font-size: 18px;
+    color: #fff;
+    letter-spacing: 2px;
+    padding-left: 30px;
+   }
+   .money{
+    margin-left: auto;
+    align-self: center;
+    font-family: SourceHanSerif-Medium;
+    line-height: 30px;
+    font-size: 28px;
+    color: rgb(230, 78, 78);
+    letter-spacing: 2px;
+    padding-left:100px;
+   }
+   .watch{
+       width: 100%;
+       height: 1800px;
+   }
+   .t1{
+    width:200px;
+   }
+   .t2{
+       padding:0 50px;
+   }
+   .t2 p, .t2 img{
+    font-family: SourceHanSerif-Medium;
+    line-height: 30px;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 2px;
+    padding-left: 30px;
+
+  
+   }
+   h3{
+    font-family: SourceHanSerif-Medium;
+    line-height: 30px;
+    font-size: 24px;
+    color: rgb(50, 149, 206);
+    letter-spacing: 2px;
+    padding-left: 30px;
+   }
+   .hide {
+	display:none;
+}
+.faq-box {
+    font-family: 'Tahoma',Kosugi Maru , Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 1px;
+	width:1120px;
+	margin:5px 0 10px 0;
+	position:relative;
+	cursor:pointer;
+	font-size:20px;
+}
+.faq-box .text-box {
+	line-height:60px;
+	background-color:#ebebebaf;
+    border-radius:5px;
+    transition: .5s;
+}
+.faq-box:hover .text-box{
+    background: #fff;
+}
+.faq-box .text-box .title2 {
+	margin-left:15px;
+}
+.faq-box .text-box .icon-add {
+	position:absolute;
+	top:20px;
+	right:20px;
+	width:20px;
+	height:20px;
+	background:url(images/plus.png) no-repeat;
+}
+.faq-box .text-box .icon-jian {
+	position:absolute;
+	top:20px;
+	right:20px;
+	width:20px;
+	height:20px;
+	background:url(images/minus.png) no-repeat;
+}
+.faq-box .nr {
+    padding:15px 10px 10px 10px;
+    color: #ddd;
+    line-height: 20px;
+    font-size: 16px;
+}
+.faq-box .nr span {
+	font-size:14px;
+	color:#afafaf;
+	padding-top:5px;
+}
+.question{
+    color:#587bee;
+    padding: 20px 0;
+    font-size: 20px;
+}
+.answer{
+    padding-left: 30px;
+}
+a{
+    color: aquamarine;
+}
+footer{
+    width: 100%;
+    color: #ddd;
+    letter-spacing: 2px;
+}
+        </style>
+
+</head>
+<body>
+            
+        <nav class="dropdowns">
+                <div class="navcontainer wrap flex">
+                        <a href="new index.html"><img class="navlogo" src="images/header_logo.png" alt=""></a>
+                    <ul class="menu flex">
+                        <li style="border-left: 1px solid #ddd;"><a href="new index.html">home</a></li>
+                        <li style="border-left: 1px solid #ddd;"><a href="detail.html">詳細ページ</a></li>
+                        <li style="border-left: 1px solid #ddd;"><a href="QA.html">ご利用ガイド</a></li>
+                        <li style="border-right: 1px solid #ddd;border-left: 1px solid #ddd;"><a href="info.html">会社案内</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="sblock"></div>
+        <div class="main">
+                <div class="title flex"><h1>ご利用ガイド</h1></div>
+                <div class="sblock"></div>
+                <div class="container wrap">
+                        <div class="faq-box">
+                                <div class="text-box"> <span class="title2">ANIPLEX+について</span>
+                                  <div class="icon-box"> <span class="icon-add"></span> <span class="icon-jian hide"></span> </div>
+                                </div>
+                                <div class="nr hide">
+                                <ul>
+                                    <li>ご注文いただく前に</li>
+                                    <p>「ANIPLEX+」でお買い物頂く際には会員登録が必要となります。 <br>
+                                    詳細はご利用ガイド「会員登録・変更方法」をご確認下さい。</p>
+                    
+                                    <li>スマートフォンサイト、モバイルサイトについて教えてください。</li>
+                                    <p>スマートフォンサイトでは、パソコンサイトと同じ商品・在庫を扱っており、限定商品や、 
+                                            イベント・キャンペーンなど最新情報をご用意しています。 <br>
+                                            ※携帯電話（フィーチャーフォン）からアクセス頂けるモバイルサイトは、2017年2月28日をもちまして 
+                                            閉鎖いたしました。</p>
+                                </ul>    
+                                <br>
+                                  </div>
+                              </div>
+                              <div class="faq-box">
+                                <div class="text-box"> <span class="title2">注文について</span>
+                                  <div class="icon-box"> <span class="icon-add"></span> <span class="icon-jian hide"></span> </div>
+                                </div>
+                                <div class="nr hide">
+                                        <div class="question dialog">注文手順を教えてください。</div>
+                                        <div class="answer capture"><p><a href="/info/guide.html#about_shopping">ご利用ガイド「ご注文の流れ」</a>をご確認下さい。</p></div>
+                                        <div class="question dialog">利用可能時間は、何時から何時までですか？</div>
+                                        <div class="answer capture"><p>サイトは24時間いつでもご利用いただけます。
+                    <br/>急激なアクセス集中時は、ご利用いただけない場合があります。</p></div>
+                                        <div class="question dialog">電話注文はできますか？</div>
+                                        <div class="answer capture"><p>誠に申し訳ございません。
+                    <br/>当ショップはインターネットショッピング専用サイトとなっております。
+                    <br/>お電話でのご注文はお受付する事ができません。
+                    <br/>インターネット(パソコン・スマートフォン)からのご注文をお願いいたします。</p></div>
+                                        <div class="question dialog">注文内容・配送状況などを確認したい</div>
+                                        <div class="answer capture"><p>「注文完了メール」の内容をご確認いただくか、サイトにてログイン後「購入履歴」でご確認することができます。</p></div>
+                                        <div class="question dialog">注文後、キャンセル・注文内容の変更はできますか？</div>
+                                        <div class="answer capture"><p>商品に不良がある場合を除き、ご注文後のお客様のご都合によるキャンセル・注文内容の変更はできません。
+                    <br/>詳細は<a href="/info/guide.html#howto_order_change">ご利用ガイド「ご注文後の変更について」</a>をご確認下さい。</p></div>
+                                        <div class="question dialog">「カートに入れる」ボタンが表示されません。</div>
+                                        <div class="answer capture"><p>品切れ、販売終了の場合は「カートに入れる」ボタンは表示されません。
+                    <br/>また販売開始前の企画商品なども「カートに入れる」ボタンは表示されません。</p></div>
+                                  </div>
+                              </div>
+                              <div class="faq-box">
+                                <div class="text-box"> <span class="title2">配送について</span>
+                                  <div class="icon-box"> <span class="icon-add"></span> <span class="icon-jian hide"></span> </div>
+                                </div>
+                                <div class="nr hide"><div class="question dialog">発送日・配送時間帯を指定できますか？</div>
+                                <div class="answer capture"><p><a href="/info/guide.html#delivery">ご利用ガイド「配送について」</a>をご確認下さい。</p></div>
+                                <div class="question dialog">注文していない商品・注文したものと違う商品が届きました。</div>
+                                <div class="answer capture"><p><a href="/info/guide.html#about_customer_support">ご利用ガイド「カスタマーサポートについて」</a>をご確認下さい。</p></div>
+                                <div class="question dialog">送料、手数料はいくらですか？</div>
+                                <div class="answer capture"><p><a href="howto.html">「送料と支払い方法」</a>をご覧ください。</p></div>
+                                <div class="question dialog">同じ日に複数回注文しましたが、送料はどうなりますか？</div>
+                                <div class="answer capture"><p>1回のご注文につき全国一律540円（税抜500円）の送料がかかります。
+            <br/>同じ日の注文でも注文が異なる毎に上記送料がかかります。</p></div>
+                                <div class="question dialog">海外から注文できますか？</div>
+                                <div class="answer capture"><p>海外からもご注文いただけますが、商品のお届けは日本国内のみとさせていただいております。海外への発送サービスは行っておりません。</p></div>
+                                <div class="question dialog">商品詳細ページで「予約」となっていた商品を購入しました。この場合、いつ頃のお届けですか？</div>
+                                <div class="answer capture"><p>商品のお届け日は商品ページにて詳細を表示しております。
+            <br/>ご注文済みの商品に関しましては、一部の商品を除いてログイン後「購入履歴」にて出荷日の予定をご確認頂けます。
+            <br/>ほか詳細は<a href="/info/guide.html#delivery">ご利用ガイド「配送について」</a>をご確認下さい。</p></div>
+                                <div class="question dialog">発売済みの商品を購入しました。お届けはいつ頃になりますか？</div>
+                                <div class="answer capture"><p><a href="/info/guide.html#delivery">ご利用ガイド「配送について」</a>をご確認下さい。</p></div>
+                                <div class="question dialog">注文商品の配送状況を教えてください。</div>
+                                  </div>
+                              </div>
+                              <div class="faq-box">
+                                    <div class="text-box"> <span class="title2">登録住所以外に配送できますか？</span>
+                                      <div class="icon-box"> <span class="icon-add"></span> <span class="icon-jian hide"></span> </div>
+                                    </div>
+                                    <div class="nr hide"><div class="answer capture"><p>登録住所以外への配送をご希望の場合は、注文時に配送希望の住所を入力・指定してください。
+                                            <br/>ほか詳細は<a href="/info/guide.html#delivery">ご利用ガイド「配送について」</a>をご確認下さい。</p></div>
+                                                                <div class="question dialog">配送業者を指定できますか？</div>
+                                                                <div class="answer capture"><p>配送業者は佐川急便となっています。他の配送業者をご利用いいただく事ができません。</p></div>
+                                                                <div class="question dialog">注文時、代金引換不可地域に該当すると表示されました。</div>
+                                                                <div class="answer capture"><p>商品のお届け先が「佐川急便の代金引換払い不可地域」に該当するお客様は、お届け先を変更していただくか、お支払方法としてクレジットカード払い・コンビニ払い・atone 翌月後払いのいずれかをお選びください。</p></div>
+                                                                <div class="question dialog">商品は、何に入って送られてきますか？梱包材（袋／箱）の指定はできますか？</div>
+                                                                <div class="answer capture"><p>商品は、ANIPLEX+の配送箱に梱包しお届けします。梱包材のご指定は承っておりません。</p></div></div>
+                                      </div>
+                                      <div class="faq-box">
+                                            <div class="text-box"> <span class="title2">長期不在にしていましたが、注文した商品はどうなっていますか？</span>
+                                              <div class="icon-box"> <span class="icon-add"></span> <span class="icon-jian hide"></span> </div>
+                                            </div>
+                                            <div class="nr hide">
+                                                    <div class="answer capture"><p>配送業者での保管期間が過ぎますと、ANIPLEX+へ返送されます。
+                                                            <br/>詳細は<a href="/info/guide.html#delivery">ご利用ガイド「配送について」</a>をご確認下さい。</p></div>
+                                                                                <div class="question dialog">ANIPLEX+で注文したのに「クロスワープ」と表記された不在票が入っていました。</div>
+                                                                                <div class="answer capture"><p>ご不在票に表記する荷送人名、及びお支払いに関連する書面等における表示は、ANIPLEX+ではなく「クロスワープ」となります。外部委託業者の詳細は<a href="/info/asct.html">「特定商取引法に基づく表示」</a>にてご確認ください。</p></div>
+                                              </div>
+                                          </div>
+                                          <div class="faq-box">
+                                                <div class="text-box"> <span class="title2">再配達はできますか？</span>
+                                                  <div class="icon-box"> <span class="icon-add"></span> <span class="icon-jian hide"></span> </div>
+                                                </div>
+                                                <div class="nr hide">
+                                                        <div class="answer capture"><p>佐川急便の保管期限を過ぎ当社倉庫返送後の再配達は、追加送料540円(税込)をご負担いただければ再配達いたします。
+                                                                <br/>追加送料は、クレジットカード払いにてご注文の場合は【追加引き落とし】にて、代金引換払い、コンビニ払い（代金前払い）・atone 翌月後払いにてご注文の場合は、追加送料540円(税込)を【代金引換】にてご負担いただきます。</p></div>
+                                                                                    <div class="question dialog">配送先・配送日時・配送オプションは変更できますか？</div>
+                                                                                    <div class="answer capture"><p>「出荷準備開始前」であればお客様ご自身で配送先・配送日時・配送オプションを変更頂けます。
+                                                                <br/>ログイン後、購入履歴の「配送先変更」より変更下さい。
+                                                                <br/>　※「コンビニ支払い」・「atone 翌月後払い」をご選択頂いたお客様は、配送オプション「分割配送」はお選び頂けません。
+                                                                <br/>  
+                                                                <br/>なお、購入履歴のステータスが「出荷準備中」となった後は、変更できませんのでご注意ください。 
+                                                                <br/>
+                                                                <br/>・変更後は変更内容に応じて「配送先変更完了のお知らせ」または「配送日時変更完了のお知らせ」メールをお送りします。 
+                                                                <br/>・住所変更の際は、次回のご注文の為に会員情報の変更もお願いします。 
+                                                                <br/>　｢商品出荷のお知らせ」メール受信後は、ご自身で配送業者に配送先変更のご連絡をお願いします。 
+                                                                <br/>　ただし代金引換払いの場合は、配送先変更が出来ない場合がございます。
+                                                                <br/>・会員情報の住所を変更しても、ご注文済みの配送先は変更されません。ご注文を頂いている商品の配送先を変更したい場合は、「購入履歴」より対象注文の「配送先変更」を必ずご登録ください。</p></div>
+                                                                                    <div class="question dialog">注文時に配送オプション「分割発送」を選んだら、配送日時を指定しているにも関わらず、指定外の日時に届きました。</div>
+                                                                                    <div class="answer capture"><p>「分割発送」はご用意できました商品から順次発送を行う為、ご注文時に配送日時を指定頂いても自動解除されます。 
+                                                                <br/>また、ご注文確定後に「おまとめ配送」を「分割配送」に変更した場合も、配送日時指定は自動的に解除されます。 
+                                                                <br/>配送日時の指定をご希望の場合は「おまとめ配送」をご利用ください。</p></div>
+                                                  </div>
+                                              </div>
+                                  </div>
+                </div>
+               
+        </div>
+               
+
+
+<a class="ATOP" id="goTop"></a>
+<footer class="flex" style="position:fixed; bottom:0;">
+        <p style="font-size:12px;padding: 0"> ©TYPE-MOON / FGO PROJECT © Aniplex Inc. All rights reserved. </p>
+ </footer>  
+        
+      
+
+         <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+     
+
+
+
+      <script>
+            $('.faq-box').click(function(){
+                var T = $(this);                 //给faq-box定义一个变量
+                var state = T.attr('data-state');//给这个变量添加一个状态
+                T.attr('data-state', state ==1? "0" : "1");
+                if(state==1){                    //判断这个状态是否为1
+                    T.find('.nr').slideToggle();
+                    T.find('.icon-add').removeClass("hide");
+                    T.find('.icon-jian').addClass("hide");
+                }else{
+                    T.find('.nr').slideToggle(); //状态为1时，内容显示，加号变减号
+                    T.find('.icon-add').addClass("hide");
+                    T.find('.icon-jian').removeClass("hide");
+                }
+            })  
+            </script>
+
+
+
+
+
+
+
+
+
+      
+  
+          <script>
+          // jQuery is required to run this code
+    $( document ).ready(function() {
+      scaleVideoContainer();
+  
+      initBannerVideoSize('.video-container .poster img');
+      initBannerVideoSize('.video-container .filter');
+      initBannerVideoSize('.video-container video');
+  
+      $(window).on('resize', function() {
+        scaleVideoContainer();
+        scaleBannerVideoSize('.video-container .poster img');
+        scaleBannerVideoSize('.video-container .filter');
+        scaleBannerVideoSize('.video-container video');
+      });
+    });
+  
+    function scaleVideoContainer() {
+      var height = $(window).height() + 5;
+      var unitHeight = parseInt(height) + 'px';
+      $('.homepage-hero-module').css('height',unitHeight);
+    }
+  
+    function initBannerVideoSize(element){
+      $(element).each(function(){
+        $(this).data('height', $(this).height());
+        $(this).data('width', $(this).width());
+      });
+  
+      scaleBannerVideoSize(element);
+    }
+  
+    function scaleBannerVideoSize(element) {
+  
+      var windowWidth = $(window).width(),
+      windowHeight = $(window).height() + 5,
+      videoWidth,
+      videoHeight;
+  
+      // console.log(windowHeight);
+  
+      $(element).each(function(){
+        var videoAspectRatio = $(this).data('height')/$(this).data('width');
+  
+        $(this).width(windowWidth);
+  
+        if(windowWidth < 1000){
+            videoHeight = windowHeight;
+            videoWidth = videoHeight / videoAspectRatio;
+            $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});
+  
+            $(this).width(videoWidth).height(videoHeight);
+        }
+  
+        $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
+  
+      });
+    }
+          </script>
+  
+  <script type="text/javascript">
+      $(function() {
+        $(window).scroll(function() {
+          if ($(this).scrollTop() > 960)  {          /* 要滑動到選單的距離 */
+             $('.dropdowns').addClass('navFixed');   /* 幫選單加上固定效果 */
+          } else {
+            $('.dropdowns').removeClass('navFixed'); /* 移除選單固定效果 */
+          }
+        });
+      });
+  </script>
+  <script>
+      $(function(){
+   
+   var $ulPic=$('ul.pic'),
+   $ulPage=$('ul.page'),
+   _liPicHtml=$ulPic.html(),//把裡面元素抓出來
+   _width=$('#wrapper').width(),
+   nowIndex=0,
+   timer,
+   speed=2000,//換banner時間
+   picLen=$ulPic.find('li').length;
+  
+   //---------------------------------------------------------------------
+  
+   //生出page dot
+   $ulPic.find('li').each(function(){
+       $ulPage.append('<li></li>');
+   })
+   $ulPage.css({width:$('ul.page li').outerWidth(true)*picLen});
+      //outerWidth(true)=margin+padding
+  
+   //---------------------------------------------------------------------
+  
+   //把圖片變double
+   $ulPic.html(_liPicHtml+_liPicHtml);//把值塞進去
+   picLen=$('ul.pic li').length;//本來4張圖 現在變8張了
+  
+   //init
+   dot();
+   timer=setTimeout(bannerMove,speed)
+  
+   //---------------------------------------------------------------------
+  
+   //按左右
+   $('#wrapper h2').click(function(){
+       bannerMove();
+   })
+   $('#wrapper h3').click(function(){
+  
+       clearTimeout(timer);
+  
+       //$ulPic瞬間移動到中間
+       if(nowIndex<=0){
+               $ulPic.css({left:picLen/2*_width*-1});
+               nowIndex=picLen/2;
+           }
+  
+       nowIndex=(nowIndex-1+picLen)%picLen;//上一張圖魔法指令
+  
+       //圖向左移動
+       $ulPic.animate({left:nowIndex*_width*-1},500,function(){
+           timer=setTimeout(bannerMove,speed)
+       });
+  
+       dot();
+   })
+  
+   //圖片移動
+   function bannerMove(){
+  
+       clearTimeout(timer);
+       nowIndex=(nowIndex+1)%picLen;//下一張圖魔法指令
+  
+       //圖向左移動
+       $ulPic.animate({left:nowIndex*_width*-1},500,function(){
+           //$ulPic瞬間移動到最左邊
+           if(nowIndex>=picLen/2){
+               $ulPic.css({left:0});
+               nowIndex=0;
+           }
+           timer=setTimeout(bannerMove,speed)
+       });
+  
+       dot();
+   }
+  
+   function dot(){
+       //dot change color
+       $ulPage.find('li').removeClass('DotColor').eq(nowIndex).addClass('DotColor');
+       if(nowIndex==5){
+           $ulPage.find('li').eq(0).addClass('DotColor');
+       }
+   }
+  
+  })
+      </script>
+      <script>
+  
+              $("#goTop").click(function(){
+                //$(window).scrollTop(0);
+                $('html,body').animate({
+                      scrollTop: 0
+                }, 700);
+              });
+              
+            </script>
+            <script>
+                   $(window).scroll(function(event){
+         var st = $(this).scrollTop();
+         if(st>1200){
+          $(".ATOP").addClass('TOP');
+         }else{
+          $(".ATOP").removeClass('TOP');
+          $("")
+         }
+      });
+      
+              </script>
+              
+                     <script>
+                          // 視窗事件
+                          $( window ).scroll( function () {
+                               
+                              if ( $( this ).scrollTop() > $( "#areaA" ).offset().top -300 ) {
+              
+                                $( "#areaA .visible" ).each( function ( i ) {
+                                  //讓所有 visible delay 200秒 刪除class 切換  fadeInUp
+                                  $( this ).delay( i * 200 ).queue( function () {
+                                    $( this ).removeClass( "visible" ).addClass( "fadeInUp" );
+                                  } );
+                                } );
+                                $( "#areaA .UNfadein" ).each( function ( i ) {
+                                  //讓所有 visible delay 200秒 刪除class 切換  fadeInUp
+                                  $( this ).delay( i * 200 ).queue( function () {
+                                    $( this ).removeClass( "UNfadein" ).addClass( "fadein" );
+                                  } );
+                                } );
+                              }
+                          
+                          } );    
+                          
+                          </script>
+  
+
+
+</body>
+</html>

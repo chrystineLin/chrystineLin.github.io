@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+    <link rel="stylesheet" href="reset.css">
+    
+<style>
+#wrapper{
+		padding-top: 20px;
+		position: relative;
+		width: 840px;
+		height: 560px;
+		overflow: hidden;
+		margin: 0 auto;
+	}
+    #wrapper ul.pic{
+		position: absolute;
+		width: 9999px;
+	}
+	#wrapper h2,#wrapper h3{
+		cursor: pointer;
+		position: absolute;
+		top:280px;
+		z-index: 5;
+	} 
+	#wrapper h2{
+		left: 795px;
+	}
+	#wrapper ul.pic li{
+		float: left;
+	}
+	ul.page{
+		margin: 0 auto;
+		padding-top: 20px;
+	}
+	ul.page li{
+		float: left;
+		margin-right: 10px;
+		width: 20px;
+		height: 8px;
+		background-color: rgba(0,0,0,0.3);
+		border-radius: 5px;
+	}
+	.DotColor{
+		background-color: rgba(15, 86, 219, 0.6) !important;
+	}
+    #wrapper h2 img, #wrapper h3 img{
+        height: 50px;
+    }
+    #wrapper h2:hover img, #wrapper h3:hover img{
+        filter: brightness(2);
+        transition: .3s;
+    }
+</style>
+</head>
+<body>
+
+<div id="wrapper">
+    	<h2><img src="images/bg-right.png"></h2>
+    	<h3><img src="images/bg-left.png"></h3>
+    	<ul class="pic">
+    		<li><img src="images/ph02.png"></li>
+    		<li><img src="images/ph03.png"></li>
+    		<li><img src="images/ph04.png"></li>
+            <li><img src="images/ph05.png"></li>
+            <li><img src="images/ph06.png"></li>
+    	</ul>
+    </div>
+    <ul class="page"></ul>
+
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+    <script>
+    $(function(){
+ 
+ var $ulPic=$('ul.pic'),
+ $ulPage=$('ul.page'),
+ _liPicHtml=$ulPic.html(),//把裡面元素抓出來
+ _width=$('#wrapper').width(),
+ nowIndex=0,
+ timer,
+ speed=2000,//換banner時間
+ picLen=$ulPic.find('li').length;
+
+ //---------------------------------------------------------------------
+
+ //生出page dot
+ $ulPic.find('li').each(function(){
+     $ulPage.append('<li></li>');
+ })
+ $ulPage.css({width:$('ul.page li').outerWidth(true)*picLen});
+    //outerWidth(true)=margin+padding
+
+ //---------------------------------------------------------------------
+
+ //把圖片變double
+ $ulPic.html(_liPicHtml+_liPicHtml);//把值塞進去
+ picLen=$('ul.pic li').length;//本來4張圖 現在變8張了
+
+ //init
+ dot();
+ timer=setTimeout(bannerMove,speed)
+
+ //---------------------------------------------------------------------
+
+ //按左右
+ $('#wrapper h2').click(function(){
+     bannerMove();
+ })
+ $('#wrapper h3').click(function(){
+
+     clearTimeout(timer);
+
+     //$ulPic瞬間移動到中間
+     if(nowIndex<=0){
+             $ulPic.css({left:picLen/2*_width*-1});
+             nowIndex=picLen/2;
+         }
+
+     nowIndex=(nowIndex-1+picLen)%picLen;//上一張圖魔法指令
+
+     //圖向左移動
+     $ulPic.animate({left:nowIndex*_width*-1},500,function(){
+         timer=setTimeout(bannerMove,speed)
+     });
+
+     dot();
+ })
+
+ //圖片移動
+ function bannerMove(){
+
+     clearTimeout(timer);
+     nowIndex=(nowIndex+1)%picLen;//下一張圖魔法指令
+
+     //圖向左移動
+     $ulPic.animate({left:nowIndex*_width*-1},500,function(){
+         //$ulPic瞬間移動到最左邊
+         if(nowIndex>=picLen/2){
+             $ulPic.css({left:0});
+             nowIndex=0;
+         }
+         timer=setTimeout(bannerMove,speed)
+     });
+
+     dot();
+ }
+
+ function dot(){
+     //dot change color
+     $ulPage.find('li').removeClass('DotColor').eq(nowIndex).addClass('DotColor');
+     if(nowIndex==5){
+         $ulPage.find('li').eq(0).addClass('DotColor');
+     }
+ }
+
+})
+    </script>
+</body>
+</html>
